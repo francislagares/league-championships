@@ -1,6 +1,6 @@
 # League Championship
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francislagares/league-championship/Tests?style=for-the-badge&labelColor=black&logo=github)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/francislagares/league-championships/Tests?style=for-the-badge&labelColor=black&logo=github)
 
 
 ## Built with
@@ -37,7 +37,7 @@
 - Clone the repo
 
   ```bash
-  $ git clone https://github.com/francislagares/league-championship.git
+  $ git clone https://github.com/francislagares/league-championships.git
   ```
 
 - Install the dependencies by running the following command.
