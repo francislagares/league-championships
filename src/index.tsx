@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'App';
+import { auth } from 'config/firebase';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const Init = (props: any) => {
+  return <App {...props} />;
+};
+
+auth.onAuthStateChanged(user => {
+  ReactDOM.render(<Init user={user} />, document.getElementById('root'));
+});

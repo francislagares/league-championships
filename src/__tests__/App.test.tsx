@@ -4,6 +4,10 @@ import App from 'App';
 
 describe('App Component', () => {
   test('Renders without crashing', () => {
-    render(<App />);
+    const user = {
+      email: 'franck@gmail.com',
+      password: 'password',
+    };
+    render(<App user={user} />);
   });
 });

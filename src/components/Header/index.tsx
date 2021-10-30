@@ -1,9 +1,19 @@
 import React from 'react';
+import { signOut } from '@firebase/auth';
 import { AppBar, Toolbar, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { auth } from 'config/firebase';
 import { CityLogo } from 'utils/tools';
 
-const Header = () => {
+interface IProps {
+  user: IUser;
+}
+
+const Header = ({ user }: IProps) => {
+  const logoutHandler = async () => {
+    await signOut(auth);
+  };
+
   return (
     <AppBar
       position='fixed'
@@ -20,16 +30,22 @@ const Header = () => {
             <CityLogo link={true} linkTo={'/'} width='70px' height='70' />
           </div>
         </div>
-
         <Link to='/the_team'>
           <Button color='inherit'>The Team</Button>
         </Link>
         <Link to='/the_matches'>
           <Button color='inherit'>The Matches</Button>
         </Link>
-        <Link to='/dashboard'>
-          <Button color='inherit'>Dashboard</Button>
-        </Link>
+        {user && (
+          <>
+            <Link to='/dashboard'>
+              <Button color='inherit'>Dashboard</Button>
+            </Link>
+            <Button color='inherit' onClick={() => logoutHandler()}>
+              Log out
+            </Button>
+          </>
+        )}
       </Toolbar>
     </AppBar>
   );

@@ -7,10 +7,14 @@ import Header from 'components/Header';
 import Home from 'components/Home';
 import SignIn from 'components/SignIn';
 
-const App = () => {
+interface IProps {
+  user: IUser;
+}
+const App = ({ user }: IProps) => {
+  console.log({ user });
   return (
     <BrowserRouter>
-      <Header />
+      <Header user={user} />
       <Switch>
         <Route path='/sign_in' component={SignIn} />
         <Route path='/' component={Home} />

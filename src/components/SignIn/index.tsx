@@ -1,28 +1,43 @@
 import React, { useState } from 'react';
-
+import { signInWithEmailAndPassword } from '@firebase/auth';
 import { CircularProgress } from '@mui/material';
 import { useFormik } from 'formik';
 import { Redirect } from 'react-router-dom';
 
 import * as Yup from 'yup';
+import { auth } from 'config/firebase';
 
-const SignIn = () => {
+const SignIn = (props: any) => {
   const [loading, setLoading] = useState(false);
+
+  const submitForm = async (values: { email: string; password: string }) => {
+    try {
+      await signInWithEmailAndPassword(
+        auth,
+        values.email,
+        values.password,
+      ).then(() => props.history.push('/dashboard'));
+    } catch (error) {
+      setLoading(false);
+      alert('ERR');
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: 'francis@gmail.com',
+      password: 'password1234',
     },
     validationSchema: Yup.object({
       email: Yup.string().email('Invalid email address').required(),
-      password: Yup.string().required('Invalid password').min(10, ''),
+      password: Yup.string().required().min(10, 'Invalid password'),
     }),
     onSubmit: values => {
       setLoading(true);
-      console.log(values);
+      submitForm(values);
     },
   });
+
   return (
     <div className='container'>
       <div className='signin_wrapper' style={{ margin: '100px' }}>
