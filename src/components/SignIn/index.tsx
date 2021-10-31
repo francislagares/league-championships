@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 import { CircularProgress } from '@mui/material';
 import { useFormik } from 'formik';
-import { Redirect } from 'react-router-dom';
 
 import * as Yup from 'yup';
 import { auth } from 'config/firebase';
+import { showErrorToast, showSuccessToast } from 'utils/tools';
 
 const SignIn = (props: any) => {
   const [loading, setLoading] = useState(false);
@@ -16,10 +16,13 @@ const SignIn = (props: any) => {
         auth,
         values.email,
         values.password,
-      ).then(() => props.history.push('/dashboard'));
+      ).then(() => {
+        showSuccessToast('Welcome Back  !');
+        props.history.push('/dashboard');
+      });
     } catch (error) {
       setLoading(false);
-      alert('ERR');
+      showErrorToast('Invalid user or password!');
     }
   };
 

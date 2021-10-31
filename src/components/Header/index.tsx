@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom';
 import { auth } from 'config/firebase';
 import { CityLogo } from 'utils/tools';
 
+import { showSuccessToast } from 'utils/tools';
+
 interface IProps {
   user: IUser;
 }
 
 const Header = ({ user }: IProps) => {
   const logoutHandler = async () => {
-    await signOut(auth);
+    await signOut(auth).then(() => showSuccessToast('Good bye!'));
   };
 
   return (
