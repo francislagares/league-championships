@@ -1,8 +1,10 @@
 import React from 'react';
+import { signOut } from '@firebase/auth';
 import { Link } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import mcityLogo from 'assets/images/logos/manchester_city_logo.png';
+import { auth } from 'config/firebase';
 
 interface IProps {
   link: boolean;
@@ -44,4 +46,8 @@ export const showSuccessToast = (msg: string) => {
   toast.success(msg, {
     position: toast.POSITION.TOP_LEFT,
   });
+};
+
+export const logoutHandler = async () => {
+  await signOut(auth).then(() => showSuccessToast('Good bye!'));
 };
