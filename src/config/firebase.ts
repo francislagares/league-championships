@@ -1,16 +1,25 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore, collection, setDoc, doc } from 'firebase/firestore';
+import { cityDb } from 'data/m-city-export';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDcIFQsFzDuAOzm3s2os8NX9mxVkBllenU',
-  authDomain: 'league-championships.firebaseapp.com',
-  projectId: 'league-championships',
-  storageBucket: 'league-championships.appspot.com',
-  messagingSenderId: '675690295762',
-  appId: '1:675690295762:web:a3637b2febcc2da9ab180b',
-  measurementId: 'G-26QKLN4669',
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const DB = getFirestore(app);
+export const matchesCollection = doc(collection(DB, 'matches'));
+
+cityDb.matches.forEach(match => {
+  setDoc(matchesCollection, match);
+});
+
 export const auth = getAuth(app);
