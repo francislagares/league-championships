@@ -13,6 +13,16 @@ interface IProps {
   height: string;
 }
 
+interface ITag {
+  children?: React.ReactNode;
+  background?: string;
+  color?: string;
+  link?: boolean;
+  linkTo: string;
+  size?: string;
+  add?: {};
+}
+
 export const CityLogo = ({ link, linkTo, width, height }: IProps) => {
   const template = (
     <img
@@ -31,6 +41,38 @@ export const CityLogo = ({ link, linkTo, width, height }: IProps) => {
         {template}
       </Link>
     );
+  } else {
+    return template;
+  }
+};
+
+export const Tag = ({
+  children,
+  link,
+  linkTo,
+  background,
+  size,
+  color,
+  add,
+}: ITag) => {
+  const template = (
+    <div
+      style={{
+        backgroundColor: background ? background : '#ffffff',
+        fontSize: size ? size : '15px',
+        color: color ? color : '#000000',
+        padding: '5px 10px',
+        display: 'inline-block',
+        fontFamily: 'Righteous',
+        ...add,
+      }}
+    >
+      {children}
+    </div>
+  );
+
+  if (link) {
+    return <Link to={linkTo}>{template}</Link>;
   } else {
     return template;
   }
