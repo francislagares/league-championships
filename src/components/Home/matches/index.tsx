@@ -1,4 +1,5 @@
 import React from 'react';
+import Sections from './Sections';
 import { Tag } from 'utils/tools';
 
 const Matches = () => {
@@ -13,7 +14,9 @@ const Matches = () => {
         >
           Matches
         </Tag>
-        BLOCKS
+
+        <Sections />
+
         <Tag color='#0e1731' size='22px' link={true} linkTo='/the_team'>
           Matches
         </Tag>
