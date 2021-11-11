@@ -9,12 +9,15 @@
   ],
   "rules": {
     "number-leading-zero": "never",
-    "a11y/font-size-is-readable": true,
+    "a11y/font-size-is-readable": null,
     "a11y/no-text-align-justify": true,
     "a11y/no-obsolete-element": true,
     "a11y/no-obsolete-attribute": true,
     "a11y/content-property-no-static-value": true,
     "selector-class-pattern": null,
+    "selector-pseudo-element-no-unknown": null,
+    "declaration-block-no-shorthand-property-overrides": null,
+    "no-descending-specificity": null,
     "order/properties-order": [
       "top",
       "bottom",
