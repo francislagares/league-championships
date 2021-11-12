@@ -17,3 +17,10 @@ interface IMatch {
   resultLocal: string;
   stadium: string;
 }
+
+interface ICard {
+  background: string;
+  number: string;
+  name: string;
+  lastname: string;
+}
