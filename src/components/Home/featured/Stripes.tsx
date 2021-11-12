@@ -17,7 +17,7 @@ const stripesState = [
     left: 360,
     rotate: 25,
     top: -394,
-    delay: 200,
+    delay: 400,
   },
   {
     id: 2018261,
@@ -25,7 +25,7 @@ const stripesState = [
     left: 600,
     rotate: 25,
     top: -498,
-    delay: 400,
+    delay: 800,
   },
 ];
 
@@ -50,7 +50,7 @@ const Stripes = () => {
           top: [stripe.top],
           timing: {
             delay: stripe.delay,
-            duration: 200,
+            duration: 1000,
             ease: easePolyOut,
           },
         }}
