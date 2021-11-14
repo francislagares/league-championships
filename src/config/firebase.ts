@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, collection, setDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection /* setDoc, doc */ } from 'firebase/firestore';
 
 // import { cityDb } from 'data/m-city-export';
 
