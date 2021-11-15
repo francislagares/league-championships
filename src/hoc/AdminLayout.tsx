@@ -1,7 +1,12 @@
 import React from 'react';
 import AdminNav from 'components/Admin/nav/AdminNav';
 
-const AdminLayout: React.FC = ({ children }) => {
+interface IProps {
+  title?: string;
+  children?: React.ReactNode;
+}
+
+const AdminLayout = ({ children }: IProps) => {
   return (
     <div className='admin_container'>
       <div className='admin_left_nav'>
