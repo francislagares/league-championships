@@ -18,6 +18,15 @@ interface IMatch {
   stadium: string;
 }
 
+interface IPlayer {
+  id: string;
+  image: string;
+  lastname: string;
+  name: string;
+  age: string;
+  position: string;
+}
+
 interface ICard {
   background: string;
   number: string;
