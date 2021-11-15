@@ -4,6 +4,7 @@ import { ComponentType } from 'react-router/node_modules/@types/react';
 import { ToastContainer } from 'react-toastify';
 
 import Dashboard from 'components/Admin/Dashboard';
+import AdminPlayers from 'components/Admin/players';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
 import Home from 'components/Home';
@@ -22,6 +23,11 @@ const App = ({ user }: IProps) => {
     <BrowserRouter>
       <Header user={user} />
       <Switch>
+        <Route
+          path='/admin_players'
+          exact
+          component={AuthGuard(AdminPlayers)}
+        />
         <Route path='/dashboard' exact component={AuthGuard(Dashboard)} />
         <Route
           path='/sign_in'
